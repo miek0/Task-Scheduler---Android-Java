@@ -11,7 +11,7 @@ public class UserDatabase extends SQLiteOpenHelper {
 
     private static final String TAG = "UserDatabase";
 
-    private static final String TABLE_NAME = "User_Table";
+    private static final String TABLE_NAME = "users_db";
     private static final String COL1 = "id";
     private static final String COL2 = "username";
     private static final String COL3 = "password";
@@ -27,22 +27,29 @@ public class UserDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 + " TEXT)";
+                COL2 + " TEXT," + COL3 + " TEXT," + COL4 + " TEXT," + COL5 + " TEXT," + COL6 + " TEXT," + COL7 + " TEXT)";
         db.execSQL(createTable);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP IF TABLE EXISTS " + TABLE_NAME);
+        db.execSQL("DROP IF TABLE EXISTS '" + TABLE_NAME +"'");
         onCreate(db);
     }
 
-    public boolean addData(String item) {
+    public boolean addData(String[] item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, item);
 
-        Log.d(TAG, "addData: Adding " + item + " to " + TABLE_NAME);
+        contentValues.put(COL2, item[0]);
+        contentValues.put(COL3, item[1]);
+        contentValues.put(COL4, item[2]);
+        contentValues.put(COL5, item[3]);
+        contentValues.put(COL6, item[4]);
+        contentValues.put(COL7, item[5]);
+
+        for(int i=0;i<item.length;i++)
+            Log.d(TAG, "addData: Adding " + item[i] + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -78,6 +85,20 @@ public class UserDatabase extends SQLiteOpenHelper {
                 " WHERE " + COL2 + " = '" + name + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
+    }
+
+    /**
+     * Returns
+     *
+     * @param name
+     * @return
+     */
+    public Cursor getItemPW(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COL3 + " FROM " + TABLE_NAME +
+                " WHERE " + COL2 + " = '" + name + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
     }
 
     /**
