@@ -1,6 +1,7 @@
 Resources
  - Notifications: https://developer.android.com/guide/topics/ui/notifiers/notifications
  - Notifications Video: https://www.youtube.com/watch?v=tTbd1Mfi-Sk
+ - Custom Notification: https://www.youtube.com/watch?v=axcdnRAcqLw
  - SQLite: https://www.youtube.com/watch?v=aQAIMY-HzL8
  
 Splash Window
