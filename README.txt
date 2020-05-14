@@ -1,5 +1,6 @@
 Resources
  - Notifications: https://developer.android.com/guide/topics/ui/notifiers/notifications
+ - Notifications Video: https://www.youtube.com/watch?v=tTbd1Mfi-Sk
  
 Splash Window
  - Start up app
