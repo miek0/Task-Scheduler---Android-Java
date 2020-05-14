@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToDo_Application</string>
+    <string name="app_name">Task Scheduler</string>
 
 <!--Main Activity XML-->
     <string name="user_task_heading_value">User\'s Tasks</string>
@@ -13,5 +13,8 @@
     <string name="help_btn_value">Help</string>
     <string name="about_btn_value">About</string>
     <string name="logout_btn_value">Logout</string>
+
+<!--  New Task XML  -->
+    <string name="new_task_header_value">New Task</string>
 
 </resources>
