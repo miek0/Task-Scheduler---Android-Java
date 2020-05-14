@@ -1,6 +1,8 @@
 package com.example.taskscheduler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.database.Cursor;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
@@ -13,10 +15,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     UserDatabase mUserDatabase;
-    private Button btnAdd, btnViewData;
+    private Button btnViewData;
     private EditText username_text, password_text;
     private Button signup_button, login_button;
-    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         signup_button = findViewById(R.id.signup_button);
         login_button = findViewById(R.id.login_button);
 
-        editText = (EditText) findViewById(R.id.editText);
-        btnAdd = (Button) findViewById(R.id.btnAdd);
         btnViewData = (Button) findViewById(R.id.btnView);
         mUserDatabase = new UserDatabase(this);
 
@@ -42,28 +41,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //upon successful login, takes user to the welcome page
+        //upon successful login, takes user to the home page
         login_button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(verify_login_credentials()) {
-//                    open_welcome_activity();
-//
-//                }
-            }
-        });
-
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newEntry = editText.getText().toString();
-                if (editText.length() != 0) {
-                    AddData(newEntry);
-                    editText.setText("");
-                } else {
-                    toastMessage("You must put something in the text field!");
+                if(verify_login_credentials()) {
+                    Intent login_intent = new Intent(MainActivity.this, ScreenSliderPagerActivity.class);
+                    startActivity(login_intent);
                 }
-
             }
         });
 
@@ -77,19 +62,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public boolean verify_login_credentials() {
-        return false;
-    }
+        String username = username_text.getText().toString();
+        String password = password_text.getText().toString();
+        int itemID = -1;
+        String itemPW = "";
 
-    public void AddData(String newEntry) {
-        boolean insertData = mUserDatabase.addData(newEntry);
-
-        if (insertData) {
-            toastMessage("Data Successfully Inserted!");
-        } else {
-            toastMessage("Something went wrong");
+        Cursor data = mUserDatabase.getItemID(username); //get the id associated with that name
+        while (data.moveToNext()) {
+            itemID = data.getInt(0);
         }
+        Cursor dataPW = mUserDatabase.getItemPW(username);
+        while (dataPW.moveToNext()) {
+            itemPW = dataPW.getString(0);
+        }
+
+        if(itemID > -1) {   //if username is correct
+            if(itemPW.equals(password))     //if pw is correct
+                return true;
+            else {
+                toastMessage("Incorrect password.");
+                password_text.setText("");
+            }
+        }
+        else{
+            toastMessage("That user does not exist.");
+            username_text.setText("");
+            password_text.setText("");
+        }
+        return false;
     }
 
     /**
