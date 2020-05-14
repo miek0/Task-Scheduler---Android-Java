@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ToDo_Application</string>
+
+<!--Main Activity XML-->
+    <string name="user_task_heading_value">User\'s Tasks</string>
+
+<!--  Profile Slider XML  -->
+    <string name="profile_information_header_value">Profile Information</string>
+    <string name="username_text_value">Username</string>
+    <string name="change_username_btn_value">Change Username</string>
+    <string name="change_passwpord_btn_value">Change Password</string>
+
+    <string name="help_btn_value">Help</string>
+    <string name="about_btn_value">About</string>
+    <string name="logout_btn_value">Logout</string>
+
+</resources>
