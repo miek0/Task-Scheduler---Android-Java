@@ -14,6 +14,8 @@ AI Notifications
       If Progress == Haven't Started -> Notification will display all 3 options.
       If Progress == Started -> Notification changes to Almost Done, and Done.
       If Progress == Done -> No more AI Notifications will be sent related to progress.
+Radio Buttons
+ - https://www.youtube.com/watch?v=1VJR1YHmSBA
  
 Splash Window
  - Start up app
