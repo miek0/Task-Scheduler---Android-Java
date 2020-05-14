@@ -1,7 +1,6 @@
 package com.example.todo_application;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,7 +20,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_slider);
+        setContentView(R.layout.main_activity);
 
         main_pager = findViewById(R.id.main_pager);
         pager_adapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
