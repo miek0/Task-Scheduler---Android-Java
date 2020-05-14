@@ -4,6 +4,17 @@ Resources
  - Custom Notification: https://www.youtube.com/watch?v=axcdnRAcqLw
  - SQLite: https://www.youtube.com/watch?v=aQAIMY-HzL8
  
+User Notifications
+ - If User has notifications enabled, they will receive notifications at a certain time they designate
+ - This notification will simply remind them of their activity.
+ 
+AI Notifications
+ - If User has notifications enabled, they will receive notifications predefine notifications checking in on their progress.
+ - Progress is defined by 3 states, Haven't Started, Started, and Done.
+      If Progress == Haven't Started -> Notification will display all 3 options.
+      If Progress == Started -> Notification changes to Almost Done, and Done.
+      If Progress == Done -> No more AI Notifications will be sent related to progress.
+ 
 Splash Window
  - Start up app
  - Logging in/out
