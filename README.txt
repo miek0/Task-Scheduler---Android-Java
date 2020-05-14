@@ -1,7 +1,15 @@
+Resources
+ - Notifications: https://developer.android.com/guide/topics/ui/notifiers/notifications
+ 
+Splash Window
+ - Start up app
+ - Logging in/out
+ - To Signup/From Signup
+
 Priorities
  - Database connection
  - Phone Notifications (alerts/progress)
- - Run in backgroun
+ - Run in background
  
  Code
  - Sign in activity
