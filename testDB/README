@@ -1,0 +1,10 @@
+main act.
+- can login and sign up properly 
+  - calls from database to check on inputs
+- i left the view all button there to see my data values, because i still can't fuckin find the .db file and idk how its annoying
+
+sign up act.
+- same verifications from hw1, but compares usernames to DB and puts all values (except confirm pw) into db
+- takes you back to main act.
+
+haven't implemented the splashes just yet
