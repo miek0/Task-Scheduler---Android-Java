@@ -88,19 +88,11 @@ public class UserDatabase extends SQLiteOpenHelper {
     }
 
     /**
-     * Returns
+     * Returns a selected field
      *
-     * @param name
-     * @return
+     * @param id
+     * @param col
      */
-    public Cursor getItemPW(String name) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL3 + " FROM " + TABLE_NAME +
-                " WHERE " + COL2 + " = '" + name + "'";
-        Cursor cursor = db.rawQuery(query, null);
-        return cursor;
-    }
-
     public Cursor getItemField(int id, String col) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + col + " FROM " + TABLE_NAME +
@@ -112,10 +104,21 @@ public class UserDatabase extends SQLiteOpenHelper {
     /**
      * Updates the name field
      *
-     * @param newName
+     * @param newField
      * @param id
-     * @param oldName
+     * @param oldField
+     * @param col
      */
+    public void updateField(String newField, String oldField, int id, String col) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET " + col +
+                " = '" + newField + "' WHERE " + COL1 + " = '" + id + "'" +
+                " AND " + col + " = '" + oldField + "'";
+        Log.d(TAG, "updateName: query: " + query);
+        db.execSQL(query);
+    }
+
+    /*************************** THIS WILL BE DELETED SOON ************************/
     public void updateName(String newName, int id, String oldName) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "UPDATE " + TABLE_NAME + " SET " + COL2 +
@@ -123,15 +126,6 @@ public class UserDatabase extends SQLiteOpenHelper {
                 " AND " + COL2 + " = '" + oldName + "'";
         Log.d(TAG, "updateName: query: " + query);
         Log.d(TAG, "updateName: Setting name to " + newName);
-        db.execSQL(query);
-    }
-
-    public void updateField(String newField, String oldField, int id, String col) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME + " SET " + col +
-                " = '" + newField + "' WHERE " + COL1 + " = '" + id + "'" +
-                " AND " + col + " = '" + oldField + "'";
-        Log.d(TAG, "updateName: query: " + query);
         db.execSQL(query);
     }
 
