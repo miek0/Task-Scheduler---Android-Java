@@ -3,6 +3,7 @@ Resources
  - Notifications Video: https://www.youtube.com/watch?v=tTbd1Mfi-Sk
  - Custom Notification: https://www.youtube.com/watch?v=axcdnRAcqLw
  - SQLite: https://www.youtube.com/watch?v=aQAIMY-HzL8
+ - Keep me logged in: https://stackoverflow.com/questions/17500265/keep-me-logged-in-checkbox-android
  
 User Notifications
  - If User has notifications enabled, they will receive notifications at a certain time they designate
