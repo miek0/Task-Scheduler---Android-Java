@@ -1,1 +1,2 @@
 This folder is for database files and tester files.
+UserDatabase should not be changed, since it holds older functions to test the 2 files.
