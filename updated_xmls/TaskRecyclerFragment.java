@@ -27,6 +27,9 @@ public class TaskRecyclerFragment extends Fragment {
     private RecyclerView task_list_rv;
     private TaskListAdapter task_list_adapter;
     private LinkedList<String> task_list = new LinkedList<>();
+    private TextView users_task;
+    UserDatabase mUserDatabase;
+    String username = "";
 
     class TaskListAdapter extends
             RecyclerView.Adapter<TaskListAdapter.TaskViewHolder> {
@@ -141,6 +144,11 @@ public class TaskRecyclerFragment extends Fragment {
             container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.task_recycler_fragment,container, false);
+        username = getActivity().getIntent().getExtras().getString("username");
+
+        mUserDatabase = new UserDatabase(this.getContext());
+        users_task = rootView.findViewById(R.id.user_task_heading);
+        users_task.setText(username+"'s Tasks");
 
         notification_manager = NotificationManagerCompat.from(rootView.getContext());
 
