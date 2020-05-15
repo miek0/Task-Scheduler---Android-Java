@@ -101,6 +101,14 @@ public class UserDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getItemField(int id, String col) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + col + " FROM " + TABLE_NAME +
+                " WHERE " + COL1 + " = " + id;
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
+    }
+
     /**
      * Updates the name field
      *
@@ -115,6 +123,15 @@ public class UserDatabase extends SQLiteOpenHelper {
                 " AND " + COL2 + " = '" + oldName + "'";
         Log.d(TAG, "updateName: query: " + query);
         Log.d(TAG, "updateName: Setting name to " + newName);
+        db.execSQL(query);
+    }
+
+    public void updateField(String newField, String oldField, int id, String col) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET " + col +
+                " = '" + newField + "' WHERE " + COL1 + " = '" + id + "'" +
+                " AND " + col + " = '" + oldField + "'";
+        Log.d(TAG, "updateName: query: " + query);
         db.execSQL(query);
     }
 
@@ -133,5 +150,4 @@ public class UserDatabase extends SQLiteOpenHelper {
         Log.d(TAG, "deleteName: Deleting " + name + " from database.");
         db.execSQL(query);
     }
-
 }
